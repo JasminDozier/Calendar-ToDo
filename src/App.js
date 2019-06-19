@@ -2,7 +2,8 @@ import React from "react";
 import Layout from "./components/layout";
 import Calendar from "./components/calendar/calendar";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+import { Bootstrap, Button } from "react-bootstrap";
+import "./App.scss";
 
 function App() {
   return (

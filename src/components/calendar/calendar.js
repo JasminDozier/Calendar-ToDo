@@ -1,6 +1,15 @@
 import React, { Component } from "react";
+import {
+  createTodo,
+  getAll,
+  getById,
+  updateById,
+  deleteById,
+  deleteAll
+} from "../../services/todo.service";
 import PickyDateTime from "react-picky-date-time";
 import "./calendar.scss";
+import TodoModal from "./todo/todoModal";
 
 class Calendar extends Component {
   state = {
@@ -13,6 +22,8 @@ class Calendar extends Component {
     second: "40",
     meridiem: "PM"
   };
+
+  async componentDidMount() {}
 
   onYearPicked(res) {
     const { year } = res;
@@ -27,6 +38,7 @@ class Calendar extends Component {
   onDatePicked(res) {
     const { date, month, year } = res;
     this.setState({ year: year, month: month, date: date });
+    return <TodoModal show={this.state.show}></TodoModal>;
   }
 
   onResetDate(res) {
@@ -102,6 +114,7 @@ class Calendar extends Component {
 
     return (
       <div className="calendar">
+        <TodoModal></TodoModal>
         <PickyDateTime
           size="m"
           mode={0}
